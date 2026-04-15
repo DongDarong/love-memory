@@ -5,9 +5,10 @@ import BackgroundHearts from './components/BackgroundHearts.vue';
 import IntroLogin from './components/IntroLogin.vue';
 import MemoryGallery from './components/MemoryGallery.vue';
 import MemoryHero from './components/MemoryHero.vue';
+import siteContent from './mocks/site-content.json';
 
-const startDate = new Date(2025, 3, 9);
-const passwordValue = '090325';
+const startDate = new Date(siteContent.relationship.anniversaryDate);
+const passwordValue = siteContent.auth.password;
 
 const assetModules = import.meta.glob('../image/*', {
   eager: true,
@@ -18,23 +19,16 @@ function asset(name) {
   return assetModules[`../image/${name}`];
 }
 
-const profileImages = {
-  him: asset('20.jpg'),
-  her: asset('16.jpg'),
-};
+const heroProfiles = siteContent.profiles.map((profile) => ({
+  ...profile,
+  image: asset(profile.image),
+}));
 
-const galleryCards = [
-  { image: asset('21.jpg'), caption: 'First Date', rotateClass: '-rotate-2', delay: '0.4s', tapeStyle: {} },
-  { image: asset('12.jpg'), caption: 'Sweet Moments', rotateClass: 'rotate-1', delay: '0.5s', tapeStyle: { transform: 'translateX(-50%) rotate(2deg)' } },
-  { image: asset('13.jpg'), caption: 'Adventures', rotateClass: '-rotate-1', delay: '0.6s', tapeStyle: {} },
-  { image: asset('4.jpg'), caption: 'Just Us', rotateClass: 'rotate-2', delay: '0.7s', tapeStyle: {} },
-  { image: asset('23.jpg'), caption: '', rotateClass: '-rotate-2', delay: '0.8s', tapeStyle: {} },
-  { image: asset('16.jpg'), caption: '', rotateClass: 'rotate-1', delay: '0.9s', tapeStyle: {} },
-  { image: asset('22.jpg'), caption: '', rotateClass: 'rotate-2', delay: '1.0s', tapeStyle: {} },
-  { image: asset('15.jpg'), caption: '', rotateClass: '-rotate-1', delay: '1.1s', tapeStyle: {} },
-  { image: asset('14.jpg'), caption: '', rotateClass: 'rotate-1', delay: '1.2s', tapeStyle: {} },
-  { image: asset('18.jpg'), caption: 'Forever', rotateClass: '-rotate-2', delay: '1.3s', tapeStyle: {} },
-];
+const galleryCards = siteContent.gallery.cards.map((card) => ({
+  ...card,
+  image: asset(card.image),
+  tapeStyle: card.tapeStyle ?? {},
+}));
 
 const hearts = ref([]);
 const isUnlocked = ref(false);
@@ -54,9 +48,9 @@ const elapsed = ref({
 });
 
 const stats = computed(() => [
-  { label: 'Years', value: elapsed.value.years },
-  { label: 'Months', value: elapsed.value.months },
-  { label: 'Days', value: elapsed.value.days },
+  { label: siteContent.relationship.stats[0], value: elapsed.value.years },
+  { label: siteContent.relationship.stats[1], value: elapsed.value.months },
+  { label: siteContent.relationship.stats[2], value: elapsed.value.days },
 ]);
 
 const introClasses = computed(() => ({
@@ -215,11 +209,12 @@ onBeforeUnmount(() => {
     <BackgroundHearts :hearts="hearts" />
 
     <audio ref="audioRef" loop>
-      <source :src="asset('song.mp3')" type="audio/mpeg" />
+      <source :src="asset(siteContent.audio.file)" type="audio/mpeg" />
     </audio>
 
     <IntroLogin
       v-model:password="password"
+      :content="siteContent.auth"
       :has-error="hasError"
       :is-shaking="isShaking"
       :intro-classes="introClasses"
@@ -231,12 +226,13 @@ onBeforeUnmount(() => {
       class="relative z-10 mx-auto w-full max-w-7xl px-4 pb-0 pt-5 sm:px-6 sm:pt-7 md:px-8"
     >
       <MemoryHero
-        :profile-images="profileImages"
+        :content="siteContent.relationship"
+        :profiles="heroProfiles"
         :stats="stats"
         :elapsed="elapsed"
       />
 
-      <MemoryGallery :cards="galleryCards" />
+      <MemoryGallery :content="siteContent.gallery" :cards="galleryCards" />
     </section>
   </main>
 </template>

@@ -1,5 +1,9 @@
 <script setup>
 defineProps({
+  content: {
+    type: Object,
+    required: true,
+  },
   cards: {
     type: Array,
     required: true,
@@ -10,11 +14,11 @@ defineProps({
 <template>
   <div class="mb-5 flex items-end justify-between gap-4 px-1 sm:mb-6">
     <div>
-      <p class="text-[0.68rem] font-semibold uppercase tracking-[0.4em] text-slate-400 sm:text-xs">Gallery</p>
-      <h2 class="mt-2 text-2xl font-semibold text-slate-800 sm:text-3xl">Captured chapters</h2>
+      <p class="text-[0.68rem] font-semibold uppercase tracking-[0.4em] text-slate-400 sm:text-xs">{{ content.eyebrow }}</p>
+      <h2 class="mt-2 text-2xl font-semibold text-slate-800 sm:text-3xl">{{ content.title }}</h2>
     </div>
     <p class="hidden max-w-xs text-right text-sm leading-6 text-slate-500 md:block">
-      Sized to stay readable on mobile while keeping the scrapbook feeling on larger screens.
+      {{ content.description }}
     </p>
   </div>
 
@@ -35,6 +39,6 @@ defineProps({
   </div>
 
   <div class="fade-in-up pb-10 text-center sm:pb-14" style="animation-delay: 1.5s">
-    <p class="font-script text-2xl text-rose-400 sm:text-3xl">Made with love</p>
+    <p class="font-script text-2xl text-rose-400 sm:text-3xl">{{ content.footerText }}</p>
   </div>
 </template>

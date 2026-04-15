@@ -1,7 +1,11 @@
 <script setup>
 defineProps({
-  profileImages: {
+  content: {
     type: Object,
+    required: true,
+  },
+  profiles: {
+    type: Array,
     required: true,
   },
   stats: {
@@ -20,12 +24,12 @@ defineProps({
     <div class="text-center lg:pt-6 lg:text-left">
       <div class="mb-6 flex items-end justify-center gap-4 sm:gap-5 lg:justify-start">
         <div class="group relative flex flex-col items-center">
-          <div class="profile-ring bg-gradient-to-r from-blue-300 to-indigo-400" />
+          <div class="profile-ring" :class="profiles[0].ringClass" />
           <div class="relative h-20 w-20 overflow-hidden rounded-full border-[5px] border-white bg-gray-100 shadow-xl sm:h-24 sm:w-24 md:h-28 md:w-28">
-            <img :src="profileImages.him" alt="Him" class="h-full w-full object-cover" />
+            <img :src="profiles[0].image" :alt="profiles[0].alt" class="h-full w-full object-cover" />
           </div>
-          <h1 class="font-script mt-3 text-xl text-gray-700 drop-shadow-sm transition-colors duration-300 group-hover:text-indigo-500 sm:text-2xl md:text-3xl">
-            Darong
+          <h1 class="font-script mt-3 text-xl text-gray-700 drop-shadow-sm transition-colors duration-300 sm:text-2xl md:text-3xl" :class="profiles[0].hoverClass">
+            {{ profiles[0].name }}
           </h1>
         </div>
 
@@ -36,27 +40,27 @@ defineProps({
         </div>
 
         <div class="group relative flex flex-col items-center">
-          <div class="profile-ring bg-gradient-to-r from-rose-300 to-pink-400" />
+          <div class="profile-ring" :class="profiles[1].ringClass" />
           <div class="relative h-20 w-20 overflow-hidden rounded-full border-[5px] border-white bg-gray-100 shadow-xl sm:h-24 sm:w-24 md:h-28 md:w-28">
-            <img :src="profileImages.her" alt="Her" class="h-full w-full object-cover" />
+            <img :src="profiles[1].image" :alt="profiles[1].alt" class="h-full w-full object-cover" />
           </div>
-          <h1 class="font-script mt-3 text-xl text-gray-700 drop-shadow-sm transition-colors duration-300 group-hover:text-rose-500 sm:text-2xl md:text-3xl">
-            Chiminh
+          <h1 class="font-script mt-3 text-xl text-gray-700 drop-shadow-sm transition-colors duration-300 sm:text-2xl md:text-3xl" :class="profiles[1].hoverClass">
+            {{ profiles[1].name }}
           </h1>
         </div>
       </div>
 
-      <p class="mb-3 text-[0.68rem] font-semibold uppercase tracking-[0.45em] text-rose-400 sm:text-xs">Forever Collection</p>
+      <p class="mb-3 text-[0.68rem] font-semibold uppercase tracking-[0.45em] text-rose-400 sm:text-xs">{{ content.heroEyebrow }}</p>
       <h1 class="font-script mx-auto max-w-xl text-[3.3rem] leading-[0.95] text-slate-800 drop-shadow-sm sm:text-6xl md:text-7xl lg:mx-0 lg:max-w-2xl">
-        My Love
+        {{ content.title }}
       </h1>
       <p class="mx-auto mt-4 max-w-xl text-sm leading-7 text-slate-500 sm:text-base lg:mx-0">
-        A soft archive of your dates, adventures, and the little moments that made the story feel real.
+        {{ content.description }}
       </p>
 
       <div class="glass-panel mx-auto mt-6 inline-block max-w-xl rounded-[1.75rem] px-5 py-4 sm:px-6 lg:mx-0">
         <p class="font-serif text-base italic leading-7 text-gray-600 md:text-lg">
-          "Every love story is beautiful, but ours is my favorite."
+          "{{ content.quote }}"
         </p>
       </div>
     </div>
@@ -64,12 +68,12 @@ defineProps({
     <div class="hero-panel glass-panel rounded-[2rem] p-4 sm:p-5 lg:mt-2">
       <div class="mb-4 flex items-center justify-between gap-3">
         <div>
-          <p class="text-[0.68rem] font-semibold uppercase tracking-[0.35em] text-rose-400 sm:text-xs">Together Since</p>
-          <h2 class="mt-2 text-xl font-semibold text-slate-800 sm:text-2xl">09 April 2025</h2>
+          <p class="text-[0.68rem] font-semibold uppercase tracking-[0.35em] text-rose-400 sm:text-xs">{{ content.sinceLabel }}</p>
+          <h2 class="mt-2 text-xl font-semibold text-slate-800 sm:text-2xl">{{ content.sinceDisplay }}</h2>
         </div>
         <div class="rounded-2xl bg-white/70 px-3 py-2 text-right shadow-sm">
-          <p class="text-[0.62rem] uppercase tracking-[0.25em] text-slate-400">Status</p>
-          <p class="mt-1 text-sm font-semibold text-emerald-500">Growing</p>
+          <p class="text-[0.62rem] uppercase tracking-[0.25em] text-slate-400">{{ content.statusLabel }}</p>
+          <p class="mt-1 text-sm font-semibold text-emerald-500">{{ content.statusValue }}</p>
         </div>
       </div>
 
@@ -87,22 +91,22 @@ defineProps({
       <div class="glass-panel mt-4 grid grid-cols-3 gap-2 rounded-[1.5rem] px-3 py-3 text-center sm:mt-5 sm:gap-3 sm:px-4 sm:py-4">
         <div class="time-chip">
           <span class="time-chip__value">{{ elapsed.hours }}</span>
-          <span class="time-chip__label">Hours</span>
+          <span class="time-chip__label">{{ content.timeLabels[0] }}</span>
         </div>
         <div class="time-chip">
           <span class="time-chip__value">{{ elapsed.minutes }}</span>
-          <span class="time-chip__label">Minutes</span>
+          <span class="time-chip__label">{{ content.timeLabels[1] }}</span>
         </div>
         <div class="time-chip">
           <span class="time-chip__value">{{ elapsed.seconds }}</span>
-          <span class="time-chip__label">Seconds</span>
+          <span class="time-chip__label">{{ content.timeLabels[2] }}</span>
         </div>
       </div>
 
       <div class="mt-4 rounded-[1.5rem] bg-white/70 px-4 py-4 text-left shadow-sm sm:mt-5">
-        <p class="text-[0.68rem] font-semibold uppercase tracking-[0.3em] text-slate-400">Memory Mood</p>
+        <p class="text-[0.68rem] font-semibold uppercase tracking-[0.3em] text-slate-400">{{ content.moodLabel }}</p>
         <p class="mt-2 text-sm leading-6 text-slate-500">
-          Warm light, favorite song, and the kind of timeline that only keeps getting better.
+          {{ content.moodDescription }}
         </p>
       </div>
     </div>
