@@ -217,14 +217,14 @@ onBeforeUnmount(() => {
     <div class="ambient ambient-two" />
     <div class="ambient ambient-three" />
 
-    <div class="fixed right-4 top-4 z-[60] sm:right-6 sm:top-6">
-      <div class="glass-panel inline-flex items-center gap-1 rounded-full p-1 shadow-[0_10px_30px_rgba(15,23,42,0.12)]">
+    <div class="fixed right-4 bottom-4 z-[60] sm:right-8 sm:bottom-8">
+      <div class="glass-panel inline-flex items-center gap-1 rounded-full p-1 shadow-[0_10px_40px_rgba(225,29,72,0.15)]">
         <button
           v-for="option in languageOptions"
           :key="option.value"
           type="button"
-          class="rounded-full px-3 py-2 text-xs font-bold tracking-[0.22em] transition-all sm:px-4"
-          :class="currentLanguage === option.value ? 'bg-rose-400 text-white shadow-sm' : 'text-slate-500'"
+          class="rounded-full px-4 py-2 text-xs font-bold tracking-[0.22em] transition-all"
+          :class="currentLanguage === option.value ? 'bg-rose-500 text-white shadow-md' : 'text-slate-500 hover:text-rose-400'"
           @click="currentLanguage = option.value"
         >
           {{ option.label }}
