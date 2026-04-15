@@ -6,6 +6,11 @@
     linear-gradient(135deg, #fffafc 0%, #ffe7ea 48%, #fff3de 100%);
 }
 
+:root[lang="km"] {
+  font-family: 'Kantumruy Pro', sans-serif;
+  line-height: 1.6;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -33,8 +38,24 @@ input {
   font-family: 'Dancing Script', cursive;
 }
 
+[lang="km"] .font-script {
+  font-family: 'Freehand', cursive;
+}
+
 .font-serif {
   font-family: 'Playfair Display', serif;
+}
+
+[lang="km"] .font-serif {
+  font-family: 'Nokora', serif;
+}
+
+[lang="km"] [class*="tracking-"] {
+  letter-spacing: 0.05em !important;
+}
+
+[lang="km"] .uppercase {
+  text-transform: none !important;
 }
 
 .love-shell {

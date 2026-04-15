@@ -1,138 +1,277 @@
 {
-  "auth": {
-    "password": "090325",
-    "title": "Love Story",
-    "eyebrow": "Private Memory Archive",
-    "description": "A small space for your photos, music, and the time you have been together.",
-    "placeholder": "Enter Password",
-    "buttonLabel": "LOGIN",
-    "errorMessage": "Wrong password! Try again.",
-    "summaryCards": [
-      {
-        "label": "Photos",
-        "value": "10+"
-      },
-      {
-        "label": "Music",
-        "value": "1"
-      },
-      {
-        "label": "Access",
-        "value": "Locked"
-      }
-    ]
-  },
-  "relationship": {
-    "anniversaryDate": "2025-04-09T00:00:00",
-    "heroEyebrow": "Forever Collection",
-    "title": "My Love",
-    "description": "A soft archive of your dates, adventures, and the little moments that made the story feel real.",
-    "quote": "Every love story is beautiful, but ours is my favorite.",
-    "sinceLabel": "Together Since",
-    "sinceDisplay": "09 April 2025",
-    "statusLabel": "Status",
-    "statusValue": "Growing",
-    "moodLabel": "Memory Mood",
-    "moodDescription": "Warm light, favorite song, and the kind of timeline that only keeps getting better.",
-    "stats": [
-      "Years",
-      "Months",
-      "Days"
-    ],
-    "timeLabels": [
-      "Hours",
-      "Minutes",
-      "Seconds"
-    ]
-  },
-  "profiles": [
-    {
-      "name": "Dong Darong",
-      "alt": "Him",
-      "image": "20.jpg",
-      "ringClass": "bg-gradient-to-r from-blue-300 to-indigo-400",
-      "hoverClass": "group-hover:text-indigo-500"
-    },
-    {
-      "name": "Mao Chiminh",
-      "alt": "Her",
-      "image": "16.jpg",
-      "ringClass": "bg-gradient-to-r from-rose-300 to-pink-400",
-      "hoverClass": "group-hover:text-rose-500"
+  "shared": {
+    "audio": {
+      "file": "song.mp3"
     }
-  ],
-  "gallery": {
-    "eyebrow": "Gallery",
-    "title": "Captured chapters",
-    "description": "Sized to stay readable on mobile while keeping the scrapbook feeling on larger screens.",
-    "footerText": "Made with love",
-    "cards": [
-      {
-        "image": "21.jpg",
-        "caption": "First Date",
-        "rotateClass": "-rotate-2",
-        "delay": "0.4s"
-      },
-      {
-        "image": "12.jpg",
-        "caption": "Sweet Moments",
-        "rotateClass": "rotate-1",
-        "delay": "0.5s",
-        "tapeStyle": {
-          "transform": "translateX(-50%) rotate(2deg)"
-        }
-      },
-      {
-        "image": "13.jpg",
-        "caption": "Adventures",
-        "rotateClass": "-rotate-1",
-        "delay": "0.6s"
-      },
-      {
-        "image": "4.jpg",
-        "caption": "Just Us",
-        "rotateClass": "rotate-2",
-        "delay": "0.7s"
-      },
-      {
-        "image": "23.jpg",
-        "caption": "",
-        "rotateClass": "-rotate-2",
-        "delay": "0.8s"
-      },
-      {
-        "image": "16.jpg",
-        "caption": "",
-        "rotateClass": "rotate-1",
-        "delay": "0.9s"
-      },
-      {
-        "image": "22.jpg",
-        "caption": "",
-        "rotateClass": "rotate-2",
-        "delay": "1.0s"
-      },
-      {
-        "image": "15.jpg",
-        "caption": "",
-        "rotateClass": "-rotate-1",
-        "delay": "1.1s"
-      },
-      {
-        "image": "14.jpg",
-        "caption": "",
-        "rotateClass": "rotate-1",
-        "delay": "1.2s"
-      },
-      {
-        "image": "18.jpg",
-        "caption": "Forever",
-        "rotateClass": "-rotate-2",
-        "delay": "1.3s"
-      }
-    ]
   },
-  "audio": {
-    "file": "song.mp3"
+  "en": {
+    "auth": {
+      "password": "090325",
+      "title": "Love Story",
+      "eyebrow": "Private Memory Archive",
+      "description": "A small space for your photos, music, and the time you have been together.",
+      "placeholder": "Enter Password",
+      "buttonLabel": "LOGIN",
+      "errorMessage": "Wrong password! Try again.",
+      "summaryCards": [
+        {
+          "label": "Photos",
+          "value": "10+"
+        },
+        {
+          "label": "Music",
+          "value": "1"
+        },
+        {
+          "label": "Access",
+          "value": "Locked"
+        }
+      ]
+    },
+    "relationship": {
+      "anniversaryDate": "2025-04-09T00:00:00",
+      "heroEyebrow": "Forever Collection",
+      "title": "My Love",
+      "description": "A soft archive of your dates, adventures, and the little moments that made the story feel real.",
+      "quote": "Every love story is beautiful, but ours is my favorite.",
+      "sinceLabel": "Together Since",
+      "sinceDisplay": "09 April 2025",
+      "statusLabel": "Status",
+      "statusValue": "Growing",
+      "moodLabel": "Memory Mood",
+      "moodDescription": "Warm light, favorite song, and the kind of timeline that only keeps getting better.",
+      "stats": [
+        "Years",
+        "Months",
+        "Days"
+      ],
+      "timeLabels": [
+        "Hours",
+        "Minutes",
+        "Seconds"
+      ]
+    },
+    "profiles": [
+      {
+        "name": "Dong Darong",
+        "alt": "Him",
+        "image": "20.jpg",
+        "ringClass": "bg-gradient-to-r from-blue-300 to-indigo-400",
+        "hoverClass": "group-hover:text-indigo-500"
+      },
+      {
+        "name": "Mao Chiminh",
+        "alt": "Her",
+        "image": "16.jpg",
+        "ringClass": "bg-gradient-to-r from-rose-300 to-pink-400",
+        "hoverClass": "group-hover:text-rose-500"
+      }
+    ],
+    "gallery": {
+      "eyebrow": "Gallery",
+      "title": "Captured chapters",
+      "description": "Sized to stay readable on mobile while keeping the scrapbook feeling on larger screens.",
+      "footerText": "Made with love",
+      "cards": [
+        {
+          "image": "21.jpg",
+          "caption": "First Date",
+          "rotateClass": "-rotate-2",
+          "delay": "0.4s"
+        },
+        {
+          "image": "12.jpg",
+          "caption": "Sweet Moments",
+          "rotateClass": "rotate-1",
+          "delay": "0.5s",
+          "tapeStyle": {
+            "transform": "translateX(-50%) rotate(2deg)"
+          }
+        },
+        {
+          "image": "13.jpg",
+          "caption": "Adventures",
+          "rotateClass": "-rotate-1",
+          "delay": "0.6s"
+        },
+        {
+          "image": "4.jpg",
+          "caption": "Just Us",
+          "rotateClass": "rotate-2",
+          "delay": "0.7s"
+        },
+        {
+          "image": "23.jpg",
+          "caption": "",
+          "rotateClass": "-rotate-2",
+          "delay": "0.8s"
+        },
+        {
+          "image": "16.jpg",
+          "caption": "",
+          "rotateClass": "rotate-1",
+          "delay": "0.9s"
+        },
+        {
+          "image": "22.jpg",
+          "caption": "",
+          "rotateClass": "rotate-2",
+          "delay": "1.0s"
+        },
+        {
+          "image": "15.jpg",
+          "caption": "",
+          "rotateClass": "-rotate-1",
+          "delay": "1.1s"
+        },
+        {
+          "image": "14.jpg",
+          "caption": "",
+          "rotateClass": "rotate-1",
+          "delay": "1.2s"
+        },
+        {
+          "image": "18.jpg",
+          "caption": "Forever",
+          "rotateClass": "-rotate-2",
+          "delay": "1.3s"
+        }
+      ]
+    }
+  },
+  "kh": {
+    "auth": {
+      "password": "090325",
+      "title": "រឿងស្នេហ៍",
+      "eyebrow": "បណ្ណសារអនុស្សាវរីយ៍ផ្ទាល់ខ្លួន",
+      "description": "កន្លែងតូចមួយសម្រាប់រូបថត បទចម្រៀង និងពេលវេលាដែលអ្នកទាំងពីរបាននៅជាមួយគ្នា។",
+      "placeholder": "បញ្ចូលពាក្យសម្ងាត់",
+      "buttonLabel": "ចូល",
+      "errorMessage": "ពាក្យសម្ងាត់មិនត្រឹមត្រូវទេ។ សូមព្យាយាមម្តងទៀត។",
+      "summaryCards": [
+        {
+          "label": "រូបថត",
+          "value": "10+"
+        },
+        {
+          "label": "តន្ត្រី",
+          "value": "1"
+        },
+        {
+          "label": "ស្ថានភាព",
+          "value": "បានចាក់សោ"
+        }
+      ]
+    },
+    "relationship": {
+      "anniversaryDate": "2025-04-09T00:00:00",
+      "heroEyebrow": "បណ្ណុំនៃស្នេហាជានិច្ច",
+      "title": "ស្នេហារបស់ខ្ញុំ",
+      "description": "បណ្ណសារទន់ភ្លន់មួយសម្រាប់ការណាត់ជួប ដំណើរកម្សាន្ត និងពេលតូចៗដែលធ្វើឱ្យរឿងស្នេហានេះមានន័យ។",
+      "quote": "រឿងស្នេហ៍ទាំងអស់សុទ្ធតែស្រស់ស្អាត ប៉ុន្តែរឿងរបស់យើងគឺជារឿងដែលខ្ញុំស្រឡាញ់បំផុត។",
+      "sinceLabel": "នៅជាមួយគ្នាតាំងពី",
+      "sinceDisplay": "09 មេសា 2025",
+      "statusLabel": "ស្ថានភាព",
+      "statusValue": "កំពុងរីកលូតលាស់",
+      "moodLabel": "អារម្មណ៍អនុស្សាវរីយ៍",
+      "moodDescription": "ពន្លឺកក់ក្តៅ បទចម្រៀងសំណព្វ និងបន្ទាត់ពេលវេលាដែលកាន់តែស្រស់ស្អាតជារៀងរាល់ថ្ងៃ។",
+      "stats": [
+        "ឆ្នាំ",
+        "ខែ",
+        "ថ្ងៃ"
+      ],
+      "timeLabels": [
+        "ម៉ោង",
+        "នាទី",
+        "វិនាទី"
+      ]
+    },
+    "profiles": [
+      {
+        "name": "ដូង ដារ៉ុង",
+        "alt": "គាត់",
+        "image": "20.jpg",
+        "ringClass": "bg-gradient-to-r from-blue-300 to-indigo-400",
+        "hoverClass": "group-hover:text-indigo-500"
+      },
+      {
+        "name": "ម៉ៅ ជីមុីញ",
+        "alt": "នាង",
+        "image": "16.jpg",
+        "ringClass": "bg-gradient-to-r from-rose-300 to-pink-400",
+        "hoverClass": "group-hover:text-rose-500"
+      }
+    ],
+    "gallery": {
+      "eyebrow": "វិចិត្រសាល",
+      "title": "ជំពូកដែលបានថតទុក",
+      "description": "បានកំណត់ទំហំឱ្យងាយអានលើទូរស័ព្ទ ខណៈដែលនៅតែរក្សាអារម្មណ៍ដូចសៀវភៅអនុស្សាវរីយ៍លើអេក្រង់ធំ។",
+      "footerText": "បង្កើតឡើងដោយក្តីស្រឡាញ់",
+      "cards": [
+        {
+          "image": "21.jpg",
+          "caption": "ការណាត់ជួបដំបូង",
+          "rotateClass": "-rotate-2",
+          "delay": "0.4s"
+        },
+        {
+          "image": "12.jpg",
+          "caption": "ពេលវេលាផ្អែមល្ហែម",
+          "rotateClass": "rotate-1",
+          "delay": "0.5s",
+          "tapeStyle": {
+            "transform": "translateX(-50%) rotate(2deg)"
+          }
+        },
+        {
+          "image": "13.jpg",
+          "caption": "ដំណើរកម្សាន្ត",
+          "rotateClass": "-rotate-1",
+          "delay": "0.6s"
+        },
+        {
+          "image": "4.jpg",
+          "caption": "មានតែយើងពីរ",
+          "rotateClass": "rotate-2",
+          "delay": "0.7s"
+        },
+        {
+          "image": "23.jpg",
+          "caption": "",
+          "rotateClass": "-rotate-2",
+          "delay": "0.8s"
+        },
+        {
+          "image": "16.jpg",
+          "caption": "",
+          "rotateClass": "rotate-1",
+          "delay": "0.9s"
+        },
+        {
+          "image": "22.jpg",
+          "caption": "",
+          "rotateClass": "rotate-2",
+          "delay": "1.0s"
+        },
+        {
+          "image": "15.jpg",
+          "caption": "",
+          "rotateClass": "-rotate-1",
+          "delay": "1.1s"
+        },
+        {
+          "image": "14.jpg",
+          "caption": "",
+          "rotateClass": "rotate-1",
+          "delay": "1.2s"
+        },
+        {
+          "image": "18.jpg",
+          "caption": "ជានិច្ច",
+          "rotateClass": "-rotate-2",
+          "delay": "1.3s"
+        }
+      ]
+    }
   }
 }

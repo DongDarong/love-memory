@@ -1,14 +1,17 @@
 <script setup>
 import confetti from 'canvas-confetti';
-import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
+import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue';
 import BackgroundHearts from './components/BackgroundHearts.vue';
 import IntroLogin from './components/IntroLogin.vue';
 import MemoryGallery from './components/MemoryGallery.vue';
 import MemoryHero from './components/MemoryHero.vue';
 import siteContent from './mocks/site-content.json';
 
-const startDate = new Date(siteContent.relationship.anniversaryDate);
-const passwordValue = siteContent.auth.password;
+const currentLanguage = ref('en');
+const languageOptions = [
+  { value: 'en', label: 'EN' },
+  { value: 'kh', label: 'KH' },
+];
 
 const assetModules = import.meta.glob('../image/*', {
   eager: true,
@@ -18,17 +21,6 @@ const assetModules = import.meta.glob('../image/*', {
 function asset(name) {
   return assetModules[`../image/${name}`];
 }
-
-const heroProfiles = siteContent.profiles.map((profile) => ({
-  ...profile,
-  image: asset(profile.image),
-}));
-
-const galleryCards = siteContent.gallery.cards.map((card) => ({
-  ...card,
-  image: asset(card.image),
-  tapeStyle: card.tapeStyle ?? {},
-}));
 
 const hearts = ref([]);
 const isUnlocked = ref(false);
@@ -47,10 +39,22 @@ const elapsed = ref({
   seconds: '00',
 });
 
+const localizedContent = computed(() => siteContent[currentLanguage.value]);
+const startDate = computed(() => new Date(localizedContent.value.relationship.anniversaryDate));
+const passwordValue = computed(() => localizedContent.value.auth.password);
+const heroProfiles = computed(() => localizedContent.value.profiles.map((profile) => ({
+  ...profile,
+  image: asset(profile.image),
+})));
+const galleryCards = computed(() => localizedContent.value.gallery.cards.map((card) => ({
+  ...card,
+  image: asset(card.image),
+  tapeStyle: card.tapeStyle ?? {},
+})));
 const stats = computed(() => [
-  { label: siteContent.relationship.stats[0], value: elapsed.value.years },
-  { label: siteContent.relationship.stats[1], value: elapsed.value.months },
-  { label: siteContent.relationship.stats[2], value: elapsed.value.days },
+  { label: localizedContent.value.relationship.stats[0], value: elapsed.value.years },
+  { label: localizedContent.value.relationship.stats[1], value: elapsed.value.months },
+  { label: localizedContent.value.relationship.stats[2], value: elapsed.value.days },
 ]);
 
 const introClasses = computed(() => ({
@@ -58,6 +62,8 @@ const introClasses = computed(() => ({
   'opacity-0': isUnlocked.value,
   'opacity-100': !isUnlocked.value,
 }));
+
+const pageLanguage = computed(() => (currentLanguage.value === 'kh' ? 'km' : 'en'));
 
 let timerId;
 let introTimeoutId;
@@ -74,9 +80,10 @@ function createHearts() {
 
 function updateTimer() {
   const now = new Date();
-  let years = now.getFullYear() - startDate.getFullYear();
-  let months = now.getMonth() - startDate.getMonth();
-  let days = now.getDate() - startDate.getDate();
+  const baseDate = startDate.value;
+  let years = now.getFullYear() - baseDate.getFullYear();
+  let months = now.getMonth() - baseDate.getMonth();
+  let days = now.getDate() - baseDate.getDate();
 
   if (days < 0) {
     months -= 1;
@@ -161,7 +168,7 @@ async function revealSurprise() {
 }
 
 function checkLogin() {
-  if (password.value === passwordValue) {
+  if (password.value === passwordValue.value) {
     revealSurprise();
     return;
   }
@@ -185,6 +192,10 @@ onMounted(() => {
   timerId = window.setInterval(updateTimer, 1000);
 });
 
+watch(pageLanguage, (value) => {
+  document.documentElement.lang = value;
+}, { immediate: true });
+
 onBeforeUnmount(() => {
   if (timerId) {
     clearInterval(timerId);
@@ -201,20 +212,35 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <main class="love-shell relative min-h-screen overflow-hidden">
+  <main :lang="pageLanguage" class="love-shell relative min-h-screen overflow-hidden">
     <div class="ambient ambient-one" />
     <div class="ambient ambient-two" />
     <div class="ambient ambient-three" />
 
+    <div class="fixed right-4 top-4 z-[60] sm:right-6 sm:top-6">
+      <div class="glass-panel inline-flex items-center gap-1 rounded-full p-1 shadow-[0_10px_30px_rgba(15,23,42,0.12)]">
+        <button
+          v-for="option in languageOptions"
+          :key="option.value"
+          type="button"
+          class="rounded-full px-3 py-2 text-xs font-bold tracking-[0.22em] transition-all sm:px-4"
+          :class="currentLanguage === option.value ? 'bg-rose-400 text-white shadow-sm' : 'text-slate-500'"
+          @click="currentLanguage = option.value"
+        >
+          {{ option.label }}
+        </button>
+      </div>
+    </div>
+
     <BackgroundHearts :hearts="hearts" />
 
     <audio ref="audioRef" loop>
-      <source :src="asset(siteContent.audio.file)" type="audio/mpeg" />
+      <source :src="asset(siteContent.shared.audio.file)" type="audio/mpeg" />
     </audio>
 
     <IntroLogin
       v-model:password="password"
-      :content="siteContent.auth"
+      :content="localizedContent.auth"
       :has-error="hasError"
       :is-shaking="isShaking"
       :intro-classes="introClasses"
@@ -226,13 +252,13 @@ onBeforeUnmount(() => {
       class="relative z-10 mx-auto w-full max-w-7xl px-4 pb-0 pt-5 sm:px-6 sm:pt-7 md:px-8"
     >
       <MemoryHero
-        :content="siteContent.relationship"
+        :content="localizedContent.relationship"
         :profiles="heroProfiles"
         :stats="stats"
         :elapsed="elapsed"
       />
 
-      <MemoryGallery :content="siteContent.gallery" :cards="galleryCards" />
+      <MemoryGallery :content="localizedContent.gallery" :cards="galleryCards" />
     </section>
   </main>
 </template>
